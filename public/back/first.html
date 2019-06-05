@@ -63,26 +63,49 @@
 
 
     <div class="lt_content">
-
-      <button class="btn btn-default" id="addBtn">添加分类</button>
+      <button class="btn btn-default " id="addBtn">添加分类</button>
 
       <table class="table table-bordered table-hover mt_20">
         <thead>
-          <tr>
-            <th width="20%">序号</th>
-            <th width="80%">一级分类名</th>
-          </tr>
+           <tr>
+             <th width="20%">序号</th>
+             <th width="80%">一级分类名</th>
+           </tr>
         </thead>
         <tbody>
-          <!-- 挖个坑 -->
+
         </tbody>
       </table>
 
       <div class="text-right">
-        <ul id="paginator"></ul>
+        <ul id="paginator">
+        </ul>
       </div>
 
     </div>
+
+
+<!--    <div class="lt_content">-->
+
+<!--      <button class="btn btn-default" id="addBtn">添加分类</button>-->
+
+<!--      <table class="table table-bordered table-hover mt_20">-->
+<!--        <thead>-->
+<!--          <tr>-->
+<!--            <th width="20%">序号</th>-->
+<!--            <th width="80%">一级分类名</th>-->
+<!--          </tr>-->
+<!--        </thead>-->
+<!--        <tbody>-->
+<!--          &lt;!&ndash; 挖个坑 &ndash;&gt;-->
+<!--        </tbody>-->
+<!--      </table>-->
+
+<!--      <div class="text-right">-->
+<!--        <ul id="paginator"></ul>-->
+<!--      </div>-->
+
+<!--    </div>-->
 
   </div>
 
@@ -145,14 +168,13 @@
 </div>
 
 
-<script type="text/html" id="firstTpl">
-  {{ each rows v i }}
+<script type="text/html" id='firstTpl'>
+    {{each rows v i}}
     <tr>
-      <!-- 当前页的个数 + 前面的页数 * 每页条数 -->
-      <td>{{ i + 1 + (page - 1)*size }}</td>
-      <td>{{ v.categoryName }}</td>
+      <td>{{i+1+(page-1)*size}}</td>
+      <td>{{v.categoryName}}</td>
     </tr>
-  {{ /each }}
+    {{/each}}
 </script>
 
 

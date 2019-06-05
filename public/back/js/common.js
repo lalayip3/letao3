@@ -49,26 +49,26 @@ $(document).ajaxStop(function() {
 // (1) 用户已登录, 啥都不用做, 让用户继续访问
 // (2) 用户未登录, 拦截到登录页
 
-if ( location.href.indexOf("login.html") === -1 ) {
-  // 地址栏中没有 login.html, 说明不是登录页, 需要进行登录拦截
-  $.ajax({
-    type: "get",
-    url: "/employee/checkRootLogin",
-    dataType: "json",
-    success: function( info ) {
-      console.log( info )
-      if ( info.success ) {
-        // 已登录, 让用户继续访问
-        console.log("用户已登录")
-      }
-
-      if ( info.error === 400 ) {
-        // 未登录, 拦截到登录页
-        location.href = "login.html";
-      }
-    }
-  })
-}
+// if ( location.href.indexOf("login.html") === -1 ) {
+//   // 地址栏中没有 login.html, 说明不是登录页, 需要进行登录拦截
+//   $.ajax({
+//     type: "get",
+//     url: "/employee/checkRootLogin",
+//     dataType: "json",
+//     success: function( info ) {
+//       console.log( info )
+//       if ( info.success ) {
+//         // 已登录, 让用户继续访问
+//         console.log("用户已登录")
+//       }
+//
+//       if ( info.error === 400 ) {
+//         // 未登录, 拦截到登录页
+//         location.href = "login.html";
+//       }
+//     }
+//   })
+// }
 
 
 
