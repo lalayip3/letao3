@@ -68,6 +68,7 @@ $(function() {
         console.log( info )
         var htmlStr = template("dropdownTpl", info );
         $('.dropdown-menu').html( htmlStr );
+
       }
     })
 
@@ -81,6 +82,11 @@ $(function() {
     var txt = $(this).text();
     // 设置 给按钮
     $('#dropdownText').text( txt );
+
+    $(this).data('id');
+    $('[name="categoryId"]').val(id);
+
+    $('#form').data('bootstrapValidator').updateStatus('categoryId','VALID');
   });
 
 
@@ -97,8 +103,67 @@ $(function() {
       var imgUrl = data.result.picAddr;
       // 设置给 img
       $('#imgBox img').attr("src", imgUrl);
+
+      $('[name=brandLogo]').val(imgUrl);
+
+      $('#form').data('bootstrapValidator').updateStatus('brandLogo','VALID');
     }
   });
+
+
+  $('#form').bootstrapValidator({
+    excluded:[],
+    feedbackIcons:{
+      valid:'glyphicon glyphicon-ok',
+      invalid:'glyphicon glyphicon-remove',
+      validating:'glyphicon glyphicon-refresh'
+    },
+    fields:{
+      brandName:{
+        validators:{
+          notEmpty:{
+            message:"请选择一级分类"
+          }
+        }
+      },
+      CategoryId:{
+        validators:{
+          notEmpty:{
+            message:'请输入二级分类'
+          }
+        }
+      },
+      brandLogo: {
+        validators:{
+          notEmpty:{
+            message:"请上传图片"
+          }
+        }
+      }
+
+    }
+  })
+
+
+  $('#form').on('success.form.bv',function (e) {
+    e.preventDefault();
+    $.ajax({
+      type:'post',
+      url:'/category/addSecondCategory',
+      data:$('#form').serialize(),
+      dataType:'json',
+      success:function (info) {
+         if (info.success) {
+           $('#addModal').modal('hide');
+           currentPage=1;
+           render();
+           $('#form').data('bootstrapValidator').resetForm(true);
+           $('#dropdownText').text('请选择一级分类');
+           $('#imgBox img').attr('src','./images/none.png');
+         }
+      }
+    })
+  })
 
 
 })
