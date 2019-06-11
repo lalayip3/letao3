@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+    function getSearch(k) {
+        var search=location.search;
+        search = decodeURI(search);
+        search = search.slice(1);
+        var arr=search.split('&');
+        var obj={};
+        arr.forEach(function (v,i) {
+            var key=v.split('=')[0];
+            var value=v.split('=')[1];
+            obj[key]=value;
+        })
+        return obj[k];
+    }
+
+    console.log(getSearch('b'));
+</script>
+
+</body>
+</html>
