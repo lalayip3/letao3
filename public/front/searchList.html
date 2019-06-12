@@ -38,7 +38,7 @@
                 </div>
 
                 <div class="lt_product">
-                    <div class="loading"></div>
+<!--                    <div class="loading"></div>-->
                 </div>
 
 
@@ -79,10 +79,10 @@
 </div>
 
 <script type="text/html">
-    <ul>
+    <ul class="mui-clearfix">
         {{each data v i}}
             <li class="lt_product_item">
-                <a href="#">
+                <a href="product.html?productId={{v.id}}" data-id="v.id">
                     <img src="{{v.pic[0].picAddr}}" alt="">
                     <p class="mui-ellipsis-2">adidas阿迪达斯</p>
                     <p>
