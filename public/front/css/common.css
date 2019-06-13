@@ -151,3 +151,20 @@ img{
     text-decoration: line-through;
 }
 
+.lt_size span.current{
+    background-color: orange;
+    color:#fff;
+}
+
+.lt_size span{
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    border: 1px solid #ccc;
+    text-align: center;
+    font-size: 12px;
+    margin: 3px 0;
+}
+
+
